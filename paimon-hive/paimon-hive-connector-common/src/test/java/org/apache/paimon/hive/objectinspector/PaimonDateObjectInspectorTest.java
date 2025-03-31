@@ -29,10 +29,10 @@ import java.time.LocalDate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /** Tests for {@link PaimonDateObjectInspector}. */
-class PaimonDateObjectInspectorTest {
+public class PaimonDateObjectInspectorTest {
 
     @Test
-    void testCategoryAndClass() {
+    public void testCategoryAndClass() {
         PaimonDateObjectInspector oi = new PaimonDateObjectInspector();
 
         assertThat(oi.getCategory()).isEqualTo(ObjectInspector.Category.PRIMITIVE);
@@ -44,7 +44,7 @@ class PaimonDateObjectInspectorTest {
     }
 
     @Test
-    void testGetPrimitiveJavaObject() {
+    public void testGetPrimitiveJavaObject() {
         PaimonDateObjectInspector oi = new PaimonDateObjectInspector();
 
         int input = 375;
@@ -53,7 +53,7 @@ class PaimonDateObjectInspectorTest {
     }
 
     @Test
-    void testGetPrimitiveWritableObject() {
+    public void testGetPrimitiveWritableObject() {
         PaimonDateObjectInspector oi = new PaimonDateObjectInspector();
 
         int input = 375;
@@ -62,7 +62,7 @@ class PaimonDateObjectInspectorTest {
     }
 
     @Test
-    void testCopyObject() {
+    public void testCopyObject() {
         PaimonDateObjectInspector oi = new PaimonDateObjectInspector();
 
         Date input = Date.valueOf(LocalDate.ofEpochDay(375));

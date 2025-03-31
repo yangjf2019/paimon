@@ -52,12 +52,12 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /** Tests for {@link PaimonInputSplit}. */
-class PaimonInputSplitTest {
+public class PaimonInputSplitTest {
 
     @TempDir java.nio.file.Path tempDir;
 
     @Test
-    void testWriteAndRead() throws Exception {
+    public void testWriteAndRead() throws Exception {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         DataFileTestDataGenerator gen = DataFileTestDataGenerator.builder().numBuckets(1).build();
         List<DataFileTestDataGenerator.Data> generated = new ArrayList<>();
@@ -98,7 +98,7 @@ class PaimonInputSplitTest {
     }
 
     @Test
-    void testWriteAndReadWithTable() throws Exception {
+    public void testWriteAndReadWithTable() throws Exception {
         Path path = new Path(tempDir.toString());
         SchemaManager schemaManager = new SchemaManager(LocalFileIO.create(), path);
         schemaManager.createTable(

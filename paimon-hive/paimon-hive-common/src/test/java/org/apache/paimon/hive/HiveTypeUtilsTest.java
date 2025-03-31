@@ -30,10 +30,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /** Test for {@link HiveTypeUtils}. */
-class HiveTypeUtilsTest {
+public class HiveTypeUtilsTest {
 
     @Test
-    void testLogicalTypeToTypeInfo() {
+    public void testLogicalTypeToTypeInfo() {
         TypeInfo boolTypeInfo = HiveTypeUtils.toTypeInfo(DataTypes.BOOLEAN());
         assertThat(boolTypeInfo.getTypeName()).isEqualTo("boolean");
 

@@ -59,17 +59,17 @@ public class MigrateIcebergTableProcedureITCase extends ActionITCaseBase {
     @TempDir java.nio.file.Path paiTempDir;
 
     @BeforeEach
-    void beforeEach() {
+    public void beforeEach() {
         TEST_HIVE_METASTORE.start(PORT);
     }
 
     @AfterEach
-    void afterEach() throws Exception {
+    public void afterEach() throws Exception {
         TEST_HIVE_METASTORE.stop();
     }
 
     @Test
-    void testMigrateIcebergTableProcedure() throws Exception {
+    public void testMigrateIcebergTableProcedure() throws Exception {
         TableEnvironment tEnv =
                 TableEnvironmentImpl.create(
                         EnvironmentSettings.newInstance().inBatchMode().build());
@@ -146,7 +146,7 @@ public class MigrateIcebergTableProcedureITCase extends ActionITCaseBase {
 
     @ParameterizedTest
     @ValueSource(booleans = {false, true})
-    void testMigrateIcebergTableAction(boolean isPartitioned) throws Exception {
+    public void testMigrateIcebergTableAction(boolean isPartitioned) throws Exception {
         TableEnvironment tEnv =
                 TableEnvironmentImpl.create(
                         EnvironmentSettings.newInstance().inBatchMode().build());

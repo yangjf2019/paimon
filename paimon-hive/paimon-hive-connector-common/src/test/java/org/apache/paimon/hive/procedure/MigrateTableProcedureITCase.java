@@ -50,12 +50,12 @@ public class MigrateTableProcedureITCase extends ActionITCaseBase {
     private static final int PORT = 9084;
 
     @BeforeEach
-    void beforeEach() {
+    public void beforeEach() {
         TEST_HIVE_METASTORE.start(PORT);
     }
 
     @AfterEach
-    void afterEach() throws Exception {
+    public void afterEach() throws Exception {
         TEST_HIVE_METASTORE.stop();
     }
 
@@ -65,7 +65,7 @@ public class MigrateTableProcedureITCase extends ActionITCaseBase {
 
     @ParameterizedTest
     @MethodSource("testArguments")
-    void testMigrateProcedure(String format) throws Exception {
+    public void testMigrateProcedure(String format) throws Exception {
         testUpgradeNonPartitionTable(format);
         resetMetastore();
         testUpgradePartitionTable(format);
@@ -77,7 +77,7 @@ public class MigrateTableProcedureITCase extends ActionITCaseBase {
         TEST_HIVE_METASTORE.start(PORT);
     }
 
-    void testUpgradePartitionTable(String format) throws Exception {
+    public void testUpgradePartitionTable(String format) throws Exception {
         TableEnvironment tEnv = tableEnvironmentBuilder().batchMode().build();
         tEnv.executeSql("CREATE CATALOG HIVE WITH ('type'='hive')");
         tEnv.useCatalog("HIVE");
@@ -110,7 +110,7 @@ public class MigrateTableProcedureITCase extends ActionITCaseBase {
         Assertions.assertThatList(r1).containsExactlyInAnyOrderElementsOf(r2);
     }
 
-    void testUpgradeNonPartitionTable(String format) throws Exception {
+    public void testUpgradeNonPartitionTable(String format) throws Exception {
         TableEnvironment tEnv = tableEnvironmentBuilder().batchMode().build();
         tEnv.executeSql("CREATE CATALOG HIVE WITH ('type'='hive')");
         tEnv.useCatalog("HIVE");
@@ -143,7 +143,7 @@ public class MigrateTableProcedureITCase extends ActionITCaseBase {
 
     @ParameterizedTest
     @ValueSource(strings = {"orc", "parquet", "avro"})
-    void testMigrateAction(String format) throws Exception {
+    public void testMigrateAction(String format) throws Exception {
         TableEnvironment tEnv = tableEnvironmentBuilder().batchMode().build();
         tEnv.executeSql("CREATE CATALOG HIVE WITH ('type'='hive')");
         tEnv.useCatalog("HIVE");

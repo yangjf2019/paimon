@@ -30,10 +30,10 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /** Tests for {@link PaimonListObjectInspector}. */
-class PaimonListObjectInspectorTest {
+public class PaimonListObjectInspectorTest {
 
     @Test
-    void testCategoryAndTypeName() {
+    public void testCategoryAndTypeName() {
         PaimonListObjectInspector oi = new PaimonListObjectInspector(DataTypes.STRING());
 
         assertThat(oi.getCategory()).isEqualTo(ObjectInspector.Category.LIST);
@@ -41,7 +41,7 @@ class PaimonListObjectInspectorTest {
     }
 
     @Test
-    void testGetListAndElement() {
+    public void testGetListAndElement() {
         PaimonListObjectInspector oi = new PaimonListObjectInspector(DataTypes.STRING());
 
         BinaryString[] stringDataArray =

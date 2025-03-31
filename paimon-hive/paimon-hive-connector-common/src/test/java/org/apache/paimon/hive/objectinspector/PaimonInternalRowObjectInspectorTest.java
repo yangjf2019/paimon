@@ -35,10 +35,10 @@ import static org.apache.paimon.hive.RandomGenericRowDataGenerator.generate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /** Tests for {@link PaimonInternalRowObjectInspector}. */
-class PaimonInternalRowObjectInspectorTest {
+public class PaimonInternalRowObjectInspectorTest {
 
     @Test
-    void testGetStructFieldRef() {
+    public void testGetStructFieldRef() {
         PaimonInternalRowObjectInspector oi =
                 new PaimonInternalRowObjectInspector(FIELD_NAMES, LOGICAL_TYPES, FIELD_COMMENTS);
         List<? extends StructField> structFields = oi.getAllStructFieldRefs();
@@ -77,7 +77,7 @@ class PaimonInternalRowObjectInspectorTest {
     }
 
     @Test
-    void testGetTypeName() {
+    public void testGetTypeName() {
         PaimonInternalRowObjectInspector oi =
                 new PaimonInternalRowObjectInspector(FIELD_NAMES, LOGICAL_TYPES, FIELD_COMMENTS);
         String expected =
@@ -109,7 +109,7 @@ class PaimonInternalRowObjectInspectorTest {
     }
 
     @Test
-    void testGetStructFieldData() {
+    public void testGetStructFieldData() {
         PaimonInternalRowObjectInspector oi =
                 new PaimonInternalRowObjectInspector(FIELD_NAMES, LOGICAL_TYPES, FIELD_COMMENTS);
         GenericRow rowData = generate();

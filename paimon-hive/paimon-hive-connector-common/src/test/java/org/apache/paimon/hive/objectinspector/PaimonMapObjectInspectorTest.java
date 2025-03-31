@@ -31,10 +31,10 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /** Tests for {@link PaimonMapObjectInspector}. */
-class PaimonMapObjectInspectorTest {
+public class PaimonMapObjectInspectorTest {
 
     @Test
-    void testCategoryAndTypeName() {
+    public void testCategoryAndTypeName() {
         PaimonMapObjectInspector oi =
                 new PaimonMapObjectInspector(DataTypes.STRING(), DataTypes.BIGINT());
 
@@ -43,7 +43,7 @@ class PaimonMapObjectInspectorTest {
     }
 
     @Test
-    void testGetMapAndValue() {
+    public void testGetMapAndValue() {
         PaimonMapObjectInspector oi =
                 new PaimonMapObjectInspector(DataTypes.STRING(), DataTypes.BIGINT());
 

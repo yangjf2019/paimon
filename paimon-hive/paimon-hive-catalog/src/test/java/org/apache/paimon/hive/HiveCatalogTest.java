@@ -89,7 +89,7 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testCheckIdentifierUpperCase() throws Exception {
+    public void testCheckIdentifierUpperCase() throws Exception {
         catalog.createDatabase("test_db", false);
         assertThatThrownBy(() -> catalog.createDatabase("TEST_DB", false))
                 .isInstanceOf(Catalog.DatabaseAlreadyExistException.class)
@@ -112,7 +112,7 @@ public class HiveCatalogTest extends CatalogTestBase {
             Thread.currentThread().getContextClassLoader().getResource("hive-conf-dir").getPath();
 
     @Test
-    void testHadoopConfDir() {
+    public void testHadoopConfDir() {
         HiveConf hiveConf =
                 HiveCatalog.createHiveConf(
                         null, HADOOP_CONF_DIR, HadoopUtils.getHadoopConfiguration(new Options()));
@@ -120,7 +120,7 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testHiveConfDir() {
+    public void testHiveConfDir() {
         try {
             testHiveConfDirImpl();
         } finally {
@@ -141,7 +141,7 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testHadoopConfDirFromEnv() {
+    public void testHadoopConfDirFromEnv() {
         Map<String, String> newEnv = new HashMap<>(System.getenv());
         newEnv.put("HADOOP_CONF_DIR", HADOOP_CONF_DIR);
         // add HADOOP_CONF_DIR to system environment
@@ -154,7 +154,7 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testHiveConfDirFromEnv() {
+    public void testHiveConfDirFromEnv() {
         try {
             testHiveConfDirFromEnvImpl();
         } finally {
@@ -175,7 +175,7 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testAddHiveTableParameters() {
+    public void testAddHiveTableParameters() {
         try {
             // Create a new database for the test
             String databaseName = "test_db";
@@ -226,7 +226,7 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testAlterHiveTableParameters() {
+    public void testAlterHiveTableParameters() {
         try {
             // Create a new database for the test
             String databaseName = "test_db";
@@ -278,7 +278,7 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testListTablesLock() {
+    public void testListTablesLock() {
         try {
             String databaseName = "test_db";
             catalog.createDatabase(databaseName, false);
@@ -421,7 +421,8 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testCreateExternalTableWithLocation(@TempDir java.nio.file.Path tempDir) throws Exception {
+    public void testCreateExternalTableWithLocation(@TempDir java.nio.file.Path tempDir)
+            throws Exception {
         HiveConf hiveConf = new HiveConf();
         String jdoConnectionURL = "jdbc:derby:memory:" + UUID.randomUUID();
         hiveConf.setVar(METASTORECONNECTURLKEY, jdoConnectionURL + ";create=true");
@@ -452,7 +453,7 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testTagToPartitionTable() throws Exception {
+    public void testTagToPartitionTable() throws Exception {
         String databaseName = "testTagToPartitionTable";
         catalog.dropDatabase(databaseName, true, true);
         catalog.createDatabase(databaseName, true);
@@ -478,7 +479,7 @@ public class HiveCatalogTest extends CatalogTestBase {
     }
 
     @Test
-    void testAlterPartitions() throws Exception {
+    public void testAlterPartitions() throws Exception {
         if (!supportPartitions()) {
             return;
         }

@@ -45,7 +45,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /** Tests for {@link HiveSchema}. */
-class HiveTableSchemaTest {
+public class HiveTableSchemaTest {
 
     private static final RowType ROW_TYPE =
             new RowType(
@@ -57,7 +57,7 @@ class HiveTableSchemaTest {
     @TempDir java.nio.file.Path tempDir;
 
     @Test
-    void testExtractSchemaWithEmptyDDLAndNoPaimonTable() {
+    public void testExtractSchemaWithEmptyDDLAndNoPaimonTable() {
         // Extract schema with empty DDL and no paimon table
         Properties tableWithEmptyDDL = createTableWithEmptyDDL();
 
@@ -70,7 +70,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testExtractSchemaWithEmptyDDLAndExistsPaimonTable() throws Exception {
+    public void testExtractSchemaWithEmptyDDLAndExistsPaimonTable() throws Exception {
         // create a paimon table
         createSchema();
         // Extract schema with empty DDL and exists paimon table
@@ -87,7 +87,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testExtractSchemaWithExistsDDLAndNoPaimonTable() {
+    public void testExtractSchemaWithExistsDDLAndNoPaimonTable() {
         // Extract schema with exists DDL and no paimon table
         Properties tableWithExistsDDL = createTableWithExistsDDL();
 
@@ -102,7 +102,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testExtractSchemaWithExistsDDLAndExistsPaimonTable() throws Exception {
+    public void testExtractSchemaWithExistsDDLAndExistsPaimonTable() throws Exception {
         // create a paimon table
         createSchema();
         // Extract schema with exists DDL and exists paimon table
@@ -119,7 +119,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testMismatchedColumnNameAndType() throws Exception {
+    public void testMismatchedColumnNameAndType() throws Exception {
         createSchema();
 
         Properties properties = new Properties();
@@ -154,7 +154,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testSubsetColumnNameAndType() throws Exception {
+    public void testSubsetColumnNameAndType() throws Exception {
         createSchema();
         Properties properties = new Properties();
         List<String> columns = Arrays.asList("a", "b");
@@ -174,7 +174,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testSupersetColumnNameAndType() throws Exception {
+    public void testSupersetColumnNameAndType() throws Exception {
         createSchema();
         Properties properties = new Properties();
         properties.setProperty("columns", "a,b,c,d");
@@ -202,7 +202,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testTooFewColumns() throws Exception {
+    public void testTooFewColumns() throws Exception {
         createSchema();
 
         Properties properties = new Properties();
@@ -214,7 +214,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testTooManyColumns() throws Exception {
+    public void testTooManyColumns() throws Exception {
         createSchema();
 
         Properties properties = new Properties();
@@ -255,7 +255,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testMismatchedPartitionKeyAndType() throws Exception {
+    public void testMismatchedPartitionKeyAndType() throws Exception {
         createSchemaWithPartition();
 
         Properties properties = new Properties();
@@ -293,7 +293,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testTooFewPartitionKeys() throws Exception {
+    public void testTooFewPartitionKeys() throws Exception {
         createSchemaWithPartition();
 
         Properties properties = new Properties();
@@ -318,7 +318,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testTooManyPartitionKeys() throws Exception {
+    public void testTooManyPartitionKeys() throws Exception {
         createSchemaWithPartition();
 
         Properties properties = new Properties();
@@ -388,7 +388,7 @@ class HiveTableSchemaTest {
     }
 
     @Test
-    void testReadHiveSchemaFromProperties() throws Exception {
+    public void testReadHiveSchemaFromProperties() throws Exception {
         createSchema();
         // cache the TableSchema to properties
         Properties properties = new Properties();

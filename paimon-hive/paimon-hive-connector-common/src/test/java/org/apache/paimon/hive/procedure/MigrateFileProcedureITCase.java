@@ -46,12 +46,12 @@ public class MigrateFileProcedureITCase extends ActionITCaseBase {
     private static final int PORT = 9085;
 
     @BeforeEach
-    void beforeEach() {
+    public void beforeEach() {
         TEST_HIVE_METASTORE.start(PORT);
     }
 
     @AfterEach
-    void afterEach() throws Exception {
+    public void afterEach() throws Exception {
         TEST_HIVE_METASTORE.stop();
     }
 
@@ -61,12 +61,12 @@ public class MigrateFileProcedureITCase extends ActionITCaseBase {
 
     @ParameterizedTest
     @MethodSource("testArguments")
-    void testMigrateFile(String format) throws Exception {
+    public void testMigrateFile(String format) throws Exception {
         test(format);
         testMigrateFileAction(format);
     }
 
-    void test(String format) throws Exception {
+    public void test(String format) throws Exception {
         TableEnvironment tEnv = tableEnvironmentBuilder().batchMode().build();
         tEnv.executeSql("CREATE CATALOG HIVE WITH ('type'='hive')");
         tEnv.useCatalog("HIVE");
@@ -100,7 +100,7 @@ public class MigrateFileProcedureITCase extends ActionITCaseBase {
         Assertions.assertThatList(r1).containsExactlyInAnyOrderElementsOf(r2);
     }
 
-    void testMigrateFileAction(String format) throws Exception {
+    public void testMigrateFileAction(String format) throws Exception {
         TableEnvironment tEnv = tableEnvironmentBuilder().batchMode().build();
         tEnv.executeSql("CREATE CATALOG HIVE WITH ('type'='hive')");
         tEnv.useCatalog("HIVE");
